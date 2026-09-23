@@ -28,6 +28,11 @@ DocQA runtime ready in 3.84 s
 
 ## Try it in 1 minute (no model needed)
 
+On Windows, double-click **`start.cmd`** (or run it from a terminal). It sets up `.venv` on first run, starts
+the runtime and lets you chat with it in the same window (`exit` stops it). It uses the stub backend automatically
+until llama.cpp and a model are in `bin\` and `models\`. `start.cmd --server-only` starts just the API.
+Or by hand:
+
 The **stub backend** stands in for llama.cpp and speaks the same API. Everything it produces is labelled STUB / SIMULATED.
 
 ```bash
@@ -62,10 +67,10 @@ docqa-runtime bench                        # Week 2 matrix: every .gguf in model
 
 | Command | What it does |
 |---|---|
-| `up` (default) | Start gateway + llama-server. `--json` / `--ready-file` for the desktop app |
+| `up` (default) | Start gateway + llama-server. `--chat` to talk to it in the same window, `--json` / `--ready-file` for the desktop app |
 | `doctor` | Pre-flight check without starting anything |
 | `models` | List GGUF files with quant, size and architecture. `*` marks the default pick |
-| `chat "…"` | Ask the running runtime (streams the answer, prints tok/s) |
+| `chat "…"` | Ask the running runtime (streams the answer, prints tok/s). No question = interactive conversation |
 | `baseline` | Week 1: fixed prompt, startup, RAM after load, peak RAM, tok/s, network probes, socket audit |
 | `bench` | Week 2: for each model: startup, peak RAM, generation tok/s, RAG-prompt read speed and time-to-first-token (median of `--runs`), comparison vs the highest-precision quant, and a recommendation for `--ram-budget-gb` |
 | `stub-models` | Create placeholder models for the stub backend |

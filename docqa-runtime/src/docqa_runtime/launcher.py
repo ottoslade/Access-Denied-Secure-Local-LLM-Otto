@@ -96,7 +96,7 @@ class Runtime:
         self._say("\n" + err.render())
         self.crashed.set()
 
-    def banner(self) -> str:
+    def banner(self, interactive: bool = False) -> str:
         b, m, cfg = self.backend, self.state.model, self.cfg
         url = self.base_url()
         stub = "  [STUB BACKEND - simulated model, no real inference]" if (b.is_stub or m.stub) else ""
@@ -113,10 +113,13 @@ class Runtime:
             f"  Offline   {'on' if cfg.offline else 'OFF'}; bound to {cfg.host} ({'this computer only' if not cfg.allow_remote else 'REMOTE ACCESS ENABLED'})",
             f"  Log       {b.log_path}",
             "",
-            'Try:  docqa-runtime chat "Hello, are you running locally?"' + (f" --url {url}" if cfg.port != 8080 else ""),
-            "Stop: Ctrl+C",
-            "",
         ]
+        if not interactive:
+            lines += [
+                'Try:  docqa-runtime chat "Hello, are you running locally?"' + (f" --url {url}" if cfg.port != 8080 else ""),
+                "Stop: Ctrl+C",
+                "",
+            ]
         return "\n".join(lines)
 
     def ready_info(self) -> dict:
@@ -141,7 +144,12 @@ class Runtime:
             self.httpd = None
 
 
-def run_up(cfg: Config, *, json_output: bool = False, ready_file: str | None = None) -> int:
+def run_up(cfg: Config, *, json_output: bool = False, ready_file: str | None = None, after_ready=None) -> int:
+    """Start the runtime and block until Ctrl+C or a backend crash.
+
+    after_ready(base_url), if given, runs in the foreground once the runtime is up (e.g. an interactive chat);
+    the runtime shuts down when it returns.
+    """
     rt = Runtime(cfg, quiet=json_output)
     stop_evt = threading.Event()
 
@@ -179,8 +187,15 @@ def run_up(cfg: Config, *, json_output: bool = False, ready_file: str | None = N
     if json_output:
         say(json.dumps(info))
     else:
-        say(rt.banner())
+        say(rt.banner(interactive=after_ready is not None))
 
+    if after_ready is not None:
+        signal.signal(signal.SIGINT, signal.default_int_handler)   # Ctrl+C reaches the chat prompt
+        try:
+            after_ready(rt.base_url())
+        except KeyboardInterrupt:
+            pass
+        stop_evt.set()
     while not stop_evt.is_set() and not rt.crashed.is_set():
         stop_evt.wait(0.5)
     crashed = rt.crashed.is_set()

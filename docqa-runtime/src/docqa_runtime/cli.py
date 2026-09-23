@@ -3,7 +3,7 @@
     docqa-runtime [up]          start the runtime (default command)
     docqa-runtime models        list GGUF models found on disk
     docqa-runtime doctor        check the setup without starting anything
-    docqa-runtime chat "..."    ask the running runtime a question
+    docqa-runtime chat ["..."]  ask the running runtime a question (no question = interactive conversation)
     docqa-runtime baseline      Week 1: hardcoded prompt + startup/RAM/tokens-per-second record
     docqa-runtime bench         Week 2: quantization performance matrix
     docqa-runtime stub-models   create stub model files for a dry run without real weights
@@ -14,6 +14,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+import time
 
 from . import __version__
 from .errors import EXIT_CONFIG, EXIT_OK, RuntimeFailure
@@ -49,6 +50,7 @@ def build_parser() -> argparse.ArgumentParser:
     _runtime_flags(up)
     up.add_argument("--json", action="store_true", help="print one JSON line when ready instead of the banner")
     up.add_argument("--ready-file", help="write endpoint info as JSON to this file when ready (for the desktop app)")
+    up.add_argument("--chat", action="store_true", help="chat with the model in this window once it is ready; exit stops the runtime")
 
     m = sub.add_parser("models", help="list models on disk")
     _runtime_flags(m)
@@ -57,12 +59,13 @@ def build_parser() -> argparse.ArgumentParser:
     d = sub.add_parser("doctor", help="check the setup without starting the runtime")
     _runtime_flags(d)
 
-    c = sub.add_parser("chat", help="send one question to a running runtime")
-    c.add_argument("prompt", nargs="+")
+    c = sub.add_parser("chat", help="ask a running runtime (no prompt = interactive conversation)")
+    c.add_argument("prompt", nargs="*")
     c.add_argument("--url", default="http://127.0.0.1:8080")
     c.add_argument("--max-tokens", type=int, default=256)
     c.add_argument("--system", help="optional system prompt")
     c.add_argument("--no-stream", action="store_true")
+    c.add_argument("--wait", type=float, default=0, help="seconds to wait for the runtime to become ready (default 0)")
 
     b = sub.add_parser("baseline", help="Week 1 baseline: hardcoded prompt + metrics record")
     _runtime_flags(b)
@@ -130,7 +133,8 @@ def dispatch(a) -> int:
     if a.cmd == "up":
         from .launcher import run_up
 
-        return run_up(cfg, json_output=a.json, ready_file=a.ready_file)
+        return run_up(cfg, json_output=a.json, ready_file=a.ready_file,
+                      after_ready=chat_repl if a.chat else None)
     if a.cmd == "models":
         return cmd_models(cfg, a.json)
     if a.cmd == "doctor":
@@ -233,12 +237,19 @@ def cmd_doctor(cfg) -> int:
 
 
 def cmd_chat(a) -> int:
-    from .client import ClientError, chat, get_json
+    from .client import get_json
 
     url = a.url.rstrip("/")
-    try:
-        status, h = get_json(url, "/health", timeout=5)
-    except OSError:
+    deadline = time.monotonic() + a.wait
+    while True:
+        try:
+            status, h = get_json(url, "/health", timeout=5)
+        except OSError:
+            status, h = None, {}
+        if status == 200 or time.monotonic() >= deadline:
+            break
+        time.sleep(0.5)
+    if status is None:
         print(f"ERROR [runtime_not_running] Nothing is answering at {url}\n  -> Start it with `docqa-runtime up` "
               "(in another window), or pass --url if it runs on another port.", file=sys.stderr)
         return 3
@@ -248,20 +259,67 @@ def cmd_chat(a) -> int:
               + (f": {err.get('message')}\n  -> {err.get('hint')}" if err else "\n  -> Wait until the model has loaded."),
               file=sys.stderr)
         return 3
-    msgs = ([{"role": "system", "content": a.system}] if a.system else []) + [{"role": "user", "content": " ".join(a.prompt)}]
+    if a.prompt:
+        msgs = ([{"role": "system", "content": a.system}] if a.system else []) + [{"role": "user", "content": " ".join(a.prompt)}]
+        return EXIT_OK if _ask(url, msgs, a.max_tokens, not a.no_stream) is not None else 1
+    chat_repl(url, system=a.system, max_tokens=a.max_tokens, stream=not a.no_stream)
+    return EXIT_OK
+
+
+def _ask(url: str, msgs: list[dict], max_tokens: int, stream: bool) -> str | None:
+    """Send one chat request, print the answer and a stats line. Returns the answer, or None on error."""
+    from .client import ClientError, chat
+
     try:
-        res = chat(url, msgs, max_tokens=a.max_tokens, stream=not a.no_stream,
-                   on_token=(lambda t: print(t, end="", flush=True)) if not a.no_stream else None)
+        res = chat(url, msgs, max_tokens=max_tokens, stream=stream,
+                   on_token=(lambda t: print(t, end="", flush=True)) if stream else None)
     except ClientError as e:
         print(f"\nERROR {e}", file=sys.stderr)
-        return 1
-    if a.no_stream:
+        return None
+    if not stream:
         print(res["text"], end="")
     t = res.get("timings") or {}
     tag = "  [stub]" if res.get("fingerprint") == "docqa-stub" else ""
     print(f"\n\n-- {res.get('model')}{tag} | {(res.get('usage') or {}).get('completion_tokens', '?')} tokens | "
           f"{t.get('predicted_per_second', 0):.1f} tok/s | total {res['total_s']:.2f} s")
-    return EXIT_OK
+    return res["text"]
+
+
+def chat_repl(url: str, *, system: str | None = None, max_tokens: int = 256, stream: bool = True) -> None:
+    """Interactive conversation with a running runtime; returns on exit / Ctrl+C / end of input."""
+    from .client import get_json
+
+    try:
+        _, h = get_json(url, "/health", timeout=5)
+    except OSError:
+        h = {}
+    model = (h.get("model") or {}).get("id", "?")
+    print(f"Chatting with {model}" + ("  [STUB - simulated answers]" if (h.get("engine") or {}).get("stub") else ""))
+    print("Type a message and press Enter. /reset starts a new conversation, exit (or Ctrl+C) quits.\n")
+    prefix = [{"role": "system", "content": system}] if system else []
+    history: list[dict] = []
+    while True:
+        try:
+            line = input("You: ").strip()
+        except (EOFError, KeyboardInterrupt):
+            print()
+            return
+        if not line:
+            continue
+        if line.lower() in {"exit", "quit", "/exit", "/quit"}:
+            return
+        if line.lower() == "/reset":
+            history.clear()
+            print("(new conversation)\n")
+            continue
+        history.append({"role": "user", "content": line})
+        print("AI:  ", end="", flush=True)
+        answer = _ask(url, prefix + history, max_tokens, stream)
+        if answer is None:
+            history.pop()                             # keep the conversation usable after e.g. context overflow
+        else:
+            history.append({"role": "assistant", "content": answer})
+        print()
 
 
 if __name__ == "__main__":
