@@ -1,0 +1,5 @@
+model_id,family,quant,file_size_mib,startup_s,rss_after_load_mib,peak_rss_mib,short_gen_tps,short_total_s,rag_prompt_tokens,rag_prompt_tps,rag_ttft_s,rag_gen_tps,rag_total_s,stub,ok,error
+stub-1b-instruct-f16,stub-1b-instruct,F16,0.0,2.18,2062.6,2062.7,7.48,13.28,1086,69.52,15.761,7.51,28.404,True,True,
+stub-1b-instruct-q4_k_m,stub-1b-instruct,Q4_K_M,0.0,0.794,738.0,738.1,24.47,4.064,1086,222.45,4.925,24.47,8.808,True,True,
+stub-1b-instruct-q5_k_m,stub-1b-instruct,Q5_K_M,0.0,0.92,833.4,833.5,21.0,4.737,1086,187.21,5.85,21.0,10.384,True,True,
+stub-1b-instruct-q8_0,stub-1b-instruct,Q8_0,0.0,1.18,1168.4,1168.5,14.11,7.051,1086,124.11,8.824,14.11,15.551,True,True,

@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "docqa-runtime"
+version = "0.2.0"
+description = "Secure Local DocQA - E1 LLM runtime: one-command llama.cpp launcher, stable local API, and benchmarks."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["psutil>=5.9"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pyinstaller>=6"]
+
+[project.scripts]
+docqa-runtime = "docqa_runtime.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

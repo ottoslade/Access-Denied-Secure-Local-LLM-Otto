@@ -1,0 +1,575 @@
+{
+  "kind": "quant_matrix",
+  "runtime_version": "0.2.0",
+  "prompt_set": "2026-09-22.1",
+  "timestamp": "2026-09-22T23:29:28-0400",
+  "system": {
+    "os": "Linux 6.18.44-fc-v37 (#1 SMP PREEMPT_DYNAMIC @0)",
+    "machine": "x86_64",
+    "cpu": "Intel(R) Xeon(R) Processor @ 2.10GHz",
+    "physical_cores": 2,
+    "logical_cores": 2,
+    "ram_total_bytes": 8422264832,
+    "ram_available_bytes": 7667589120,
+    "python": "3.11.15",
+    "hostname_hash": "0x6e2aed",
+    "timestamp": "2026-09-22T23:29:28-0400"
+  },
+  "settings": {
+    "runs": 3,
+    "max_tokens": 64,
+    "ctx_size": 4096,
+    "threads": "auto",
+    "n_gpu_layers": 0,
+    "temperature": 0,
+    "ram_budget_gb": 6.0,
+    "min_gen_tps": 8.0,
+    "max_ttft_s": 15.0
+  },
+  "network": {
+    "outbound_reachable": true,
+    "attempts": [
+      {
+        "target": "1.1.1.1:443",
+        "result": "connected"
+      }
+    ]
+  },
+  "stub": false,
+  "results": [
+    {
+      "model": {
+        "id": "tiny-random-f16",
+        "path": "<models>/tiny-random-F16.gguf",
+        "size_bytes": 40319200,
+        "quant": "F16",
+        "architecture": "llama",
+        "name": "tiny-random-llama (test only)",
+        "context_length": 2048,
+        "size_label": null,
+        "stub": false,
+        "display_size": "38 MiB",
+        "weight_bytes": 40319200
+      },
+      "family": "tiny-random",
+      "quant": "F16",
+      "ok": true,
+      "startup_s": 0.157,
+      "rss_after_load_bytes": 90689536,
+      "backend_version": "0.1.0-dev (build 1, commit 4df29be)",
+      "stub": false,
+      "command": "<llama.cpp>/bin/llama-server -m <models>/tiny-random-F16.gguf --alias tiny-random-f16 --host 127.0.0.1 --port 42585 -c 4096 -t 2 -ngl 0 --offline --no-webui",
+      "log": "./runs/logs/llama-server-20260922-232922-tiny-random-f16.log",
+      "audit": {
+        "available": true,
+        "listening": [
+          "127.0.0.1:42585"
+        ],
+        "connections": [
+          "127.0.0.1:42585 -> 127.0.0.1:59916 (FIN_WAIT2)"
+        ],
+        "loopback_only": true,
+        "violations": []
+      },
+      "peak_rss_bytes": 106295296,
+      "peak_rss_source": "os_peak_counter",
+      "runs": {
+        "short": [
+          {
+            "run": 1,
+            "ttft_s": 0.009,
+            "total_s": 0.092,
+            "prompt_tokens": 46,
+            "completion_tokens": 64,
+            "prompt_n": 46,
+            "prompt_tps": 8120.04,
+            "gen_tps": 763.35,
+            "fingerprint": "b1-4df29be",
+            "text_preview": " Tom consult Play consult Play consult Play Tom consult Play Play\u2500\u2500\u2500\u2500 consult Play\u2500\u2500\u2500\u2500 consult Play\u2500\u2500\u2500\u2500 consult Play\u2500\u2500\u2500\u2500 consultrop consultrop consultrop consul"
+          },
+          {
+            "run": 2,
+            "ttft_s": 0.012,
+            "total_s": 0.086,
+            "prompt_tokens": 46,
+            "completion_tokens": 64,
+            "prompt_n": 46,
+            "prompt_tps": 8118.6,
+            "gen_tps": 862.9,
+            "fingerprint": "b1-4df29be",
+            "text_preview": " Tom consult Play consult Play consult Play Tom consult Play Play\u2500\u2500\u2500\u2500 consult Play\u2500\u2500\u2500\u2500 consult Play\u2500\u2500\u2500\u2500 consult Play\u2500\u2500\u2500\u2500 consultrop consultrop consultrop consul"
+          },
+          {
+            "run": 3,
+            "ttft_s": 0.015,
+            "total_s": 0.088,
+            "prompt_tokens": 46,
+            "completion_tokens": 64,
+            "prompt_n": 46,
+            "prompt_tps": 8315.26,
+            "gen_tps": 817.9,
+            "fingerprint": "b1-4df29be",
+            "text_preview": " Tom consult Play consult Play consult Play Tom consult Play Play\u2500\u2500\u2500\u2500 consult Play\u2500\u2500\u2500\u2500 consult Play\u2500\u2500\u2500\u2500 consult Play\u2500\u2500\u2500\u2500 consultrop consultrop consultrop consul"
+          }
+        ],
+        "rag": [
+          {
+            "run": 1,
+            "ttft_s": 0.1,
+            "total_s": 0.269,
+            "prompt_tokens": 1015,
+            "completion_tokens": 64,
+            "prompt_n": 1015,
+            "prompt_tps": 11699.34,
+            "gen_tps": 367.5,
+            "fingerprint": "b1-4df29be",
+            "text_preview": " viv\u043a\u0456 causezhuzione\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 "
+          },
+          {
+            "run": 2,
+            "ttft_s": 0.099,
+            "total_s": 0.275,
+            "prompt_tokens": 1015,
+            "completion_tokens": 64,
+            "prompt_n": 1015,
+            "prompt_tps": 11876.62,
+            "gen_tps": 357.39,
+            "fingerprint": "b1-4df29be",
+            "text_preview": " viv\u043a\u0456 causezhuzione\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 "
+          },
+          {
+            "run": 3,
+            "ttft_s": 0.094,
+            "total_s": 0.26,
+            "prompt_tokens": 1015,
+            "completion_tokens": 64,
+            "prompt_n": 1015,
+            "prompt_tps": 12288.43,
+            "gen_tps": 371.46,
+            "fingerprint": "b1-4df29be",
+            "text_preview": " viv\u043a\u0456 causezhuzione\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 "
+          }
+        ]
+      },
+      "summary": {
+        "short_gen_tps": 817.9,
+        "short_total_s": 0.088,
+        "rag_prompt_tokens": 1015,
+        "rag_prompt_tps": 11876.62,
+        "rag_ttft_s": 0.099,
+        "rag_gen_tps": 367.5,
+        "rag_total_s": 0.269
+      }
+    },
+    {
+      "model": {
+        "id": "tiny-random-f32",
+        "path": "<models>/tiny-random-F32.gguf",
+        "size_bytes": 79902880,
+        "quant": "F32",
+        "architecture": "llama",
+        "name": "tiny-random-llama (test only)",
+        "context_length": 2048,
+        "size_label": null,
+        "stub": false,
+        "display_size": "76 MiB",
+        "weight_bytes": 79902880
+      },
+      "family": "tiny-random",
+      "quant": "F32",
+      "ok": true,
+      "startup_s": 0.154,
+      "rss_after_load_bytes": 123744256,
+      "backend_version": "0.1.0-dev (build 1, commit 4df29be)",
+      "stub": false,
+      "command": "<llama.cpp>/bin/llama-server -m <models>/tiny-random-F32.gguf --alias tiny-random-f32 --host 127.0.0.1 --port 34505 -c 4096 -t 2 -ngl 0 --offline --no-webui",
+      "log": "./runs/logs/llama-server-20260922-232924-tiny-random-f32.log",
+      "audit": {
+        "available": true,
+        "listening": [
+          "127.0.0.1:34505"
+        ],
+        "connections": [],
+        "loopback_only": true,
+        "violations": []
+      },
+      "peak_rss_bytes": 139407360,
+      "peak_rss_source": "os_peak_counter",
+      "runs": {
+        "short": [
+          {
+            "run": 1,
+            "ttft_s": 0.014,
+            "total_s": 0.117,
+            "prompt_tokens": 46,
+            "completion_tokens": 64,
+            "prompt_n": 46,
+            "prompt_tps": 6938.16,
+            "gen_tps": 611.89,
+            "fingerprint": "b1-4df29be",
+            "text_preview": " Tom consult Play consult Play consult Play Tom consult Play Play\u2500\u2500\u2500\u2500 consult Play\u2500\u2500\u2500\u2500 consult Play\u2500\u2500\u2500\u2500 consult Play\u2500\u2500\u2500\u2500 consultrop consultrop consultrop consul"
+          },
+          {
+            "run": 2,
+            "ttft_s": 0.016,
+            "total_s": 0.126,
+            "prompt_tokens": 46,
+            "completion_tokens": 64,
+            "prompt_n": 46,
+            "prompt_tps": 6656.06,
+            "gen_tps": 579.02,
+            "fingerprint": "b1-4df29be",
+            "text_preview": " Tom consult Play consult Play consult Play Tom consult Play Play\u2500\u2500\u2500\u2500 consult Play\u2500\u2500\u2500\u2500 consult Play\u2500\u2500\u2500\u2500 consult Play\u2500\u2500\u2500\u2500 consultrop consultrop consultrop consul"
+          },
+          {
+            "run": 3,
+            "ttft_s": 0.012,
+            "total_s": 0.112,
+            "prompt_tokens": 46,
+            "completion_tokens": 64,
+            "prompt_n": 46,
+            "prompt_tps": 7104.25,
+            "gen_tps": 642.14,
+            "fingerprint": "b1-4df29be",
+            "text_preview": " Tom consult Play consult Play consult Play Tom consult Play Play\u2500\u2500\u2500\u2500 consult Play\u2500\u2500\u2500\u2500 consult Play\u2500\u2500\u2500\u2500 consult Play\u2500\u2500\u2500\u2500 consultrop consultrop consultrop consul"
+          }
+        ],
+        "rag": [
+          {
+            "run": 1,
+            "ttft_s": 0.107,
+            "total_s": 0.301,
+            "prompt_tokens": 1015,
+            "completion_tokens": 64,
+            "prompt_n": 1015,
+            "prompt_tps": 10806.84,
+            "gen_tps": 320.45,
+            "fingerprint": "b1-4df29be",
+            "text_preview": " viv\u043a\u0456 causezhuzione\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 "
+          },
+          {
+            "run": 2,
+            "ttft_s": 0.112,
+            "total_s": 0.296,
+            "prompt_tokens": 1015,
+            "completion_tokens": 64,
+            "prompt_n": 1015,
+            "prompt_tps": 10551.37,
+            "gen_tps": 339.33,
+            "fingerprint": "b1-4df29be",
+            "text_preview": " viv\u043a\u0456 causezhuzione\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 "
+          },
+          {
+            "run": 3,
+            "ttft_s": 0.107,
+            "total_s": 0.308,
+            "prompt_tokens": 1015,
+            "completion_tokens": 64,
+            "prompt_n": 1015,
+            "prompt_tps": 11105.52,
+            "gen_tps": 304.48,
+            "fingerprint": "b1-4df29be",
+            "text_preview": " viv\u043a\u0456 causezhuzione\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 "
+          }
+        ]
+      },
+      "summary": {
+        "short_gen_tps": 611.89,
+        "short_total_s": 0.117,
+        "rag_prompt_tokens": 1015,
+        "rag_prompt_tps": 10806.84,
+        "rag_ttft_s": 0.107,
+        "rag_gen_tps": 320.45,
+        "rag_total_s": 0.301
+      }
+    },
+    {
+      "model": {
+        "id": "tiny-random-q4_k_m",
+        "path": "<models>/tiny-random-Q4_K_M.gguf",
+        "size_bytes": 14115552,
+        "quant": "Q4_K_M",
+        "architecture": "llama",
+        "name": "tiny-random-llama (test only)",
+        "context_length": 2048,
+        "size_label": null,
+        "stub": false,
+        "display_size": "13 MiB",
+        "weight_bytes": 14115552
+      },
+      "family": "tiny-random",
+      "quant": "Q4_K_M",
+      "ok": true,
+      "startup_s": 0.153,
+      "rss_after_load_bytes": 60190720,
+      "backend_version": "0.1.0-dev (build 1, commit 4df29be)",
+      "stub": false,
+      "command": "<llama.cpp>/bin/llama-server -m <models>/tiny-random-Q4_K_M.gguf --alias tiny-random-q4_k_m --host 127.0.0.1 --port 48209 -c 4096 -t 2 -ngl 0 --offline --no-webui",
+      "log": "./runs/logs/llama-server-20260922-232926-tiny-random-q4_k_m.log",
+      "audit": {
+        "available": true,
+        "listening": [
+          "127.0.0.1:48209"
+        ],
+        "connections": [
+          "127.0.0.1:48209 -> 127.0.0.1:54690 (FIN_WAIT2)"
+        ],
+        "loopback_only": true,
+        "violations": []
+      },
+      "peak_rss_bytes": 76054528,
+      "peak_rss_source": "os_peak_counter",
+      "runs": {
+        "short": [
+          {
+            "run": 1,
+            "ttft_s": 0.011,
+            "total_s": 0.062,
+            "prompt_tokens": 46,
+            "completion_tokens": 64,
+            "prompt_n": 46,
+            "prompt_tps": 10910.82,
+            "gen_tps": 1239.94,
+            "fingerprint": "b1-4df29be",
+            "text_preview": " Tom Tom Tom Tom Tom Tom Tom Play Tom Play Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom relationships"
+          },
+          {
+            "run": 2,
+            "ttft_s": 0.012,
+            "total_s": 0.068,
+            "prompt_tokens": 46,
+            "completion_tokens": 64,
+            "prompt_n": 46,
+            "prompt_tps": 9046.21,
+            "gen_tps": 1130.07,
+            "fingerprint": "b1-4df29be",
+            "text_preview": " Tom Tom Tom Tom Tom Tom Tom Play Tom Play Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom relationships"
+          },
+          {
+            "run": 3,
+            "ttft_s": 0.014,
+            "total_s": 0.063,
+            "prompt_tokens": 46,
+            "completion_tokens": 64,
+            "prompt_n": 46,
+            "prompt_tps": 9869.13,
+            "gen_tps": 1213.92,
+            "fingerprint": "b1-4df29be",
+            "text_preview": " Tom Tom Tom Tom Tom Tom Tom Play Tom Play Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom Tom relationships"
+          }
+        ],
+        "rag": [
+          {
+            "run": 1,
+            "ttft_s": 0.076,
+            "total_s": 0.228,
+            "prompt_tokens": 1015,
+            "completion_tokens": 64,
+            "prompt_n": 1015,
+            "prompt_tps": 14891.87,
+            "gen_tps": 413.04,
+            "fingerprint": "b1-4df29be",
+            "text_preview": "\u0435\u043a\u0441\u0438\u0437\u0435\u043d host Lab host Lab host Lab host Lab host Lab host Lab host Lab host Lab host Lab host Lab host Lab host Lab host Lab host Lab host Lab host Lab host Lab"
+          },
+          {
+            "run": 2,
+            "ttft_s": 0.083,
+            "total_s": 0.242,
+            "prompt_tokens": 1015,
+            "completion_tokens": 64,
+            "prompt_n": 1015,
+            "prompt_tps": 14302.02,
+            "gen_tps": 391.44,
+            "fingerprint": "b1-4df29be",
+            "text_preview": "\u0435\u043a\u0441\u0438\u0437\u0435\u043d host Lab host Lab host Lab host Lab host Lab host Lab host Lab host Lab host Lab host Lab host Lab host Lab host Lab host Lab host Lab host Lab host Lab"
+          },
+          {
+            "run": 3,
+            "ttft_s": 0.076,
+            "total_s": 0.228,
+            "prompt_tokens": 1015,
+            "completion_tokens": 64,
+            "prompt_n": 1015,
+            "prompt_tps": 15640.89,
+            "gen_tps": 414.86,
+            "fingerprint": "b1-4df29be",
+            "text_preview": "\u0435\u043a\u0441\u0438\u0437\u0435\u043d host Lab host Lab host Lab host Lab host Lab host Lab host Lab host Lab host Lab host Lab host Lab host Lab host Lab host Lab host Lab host Lab host Lab"
+          }
+        ]
+      },
+      "summary": {
+        "short_gen_tps": 1213.92,
+        "short_total_s": 0.063,
+        "rag_prompt_tokens": 1015,
+        "rag_prompt_tps": 14891.87,
+        "rag_ttft_s": 0.076,
+        "rag_gen_tps": 413.04,
+        "rag_total_s": 0.228
+      }
+    },
+    {
+      "model": {
+        "id": "tiny-random-q8_0",
+        "path": "<models>/tiny-random-Q8_0.gguf",
+        "size_bytes": 21764320,
+        "quant": "Q8_0",
+        "architecture": "llama",
+        "name": "tiny-random-llama (test only)",
+        "context_length": 2048,
+        "size_label": null,
+        "stub": false,
+        "display_size": "21 MiB",
+        "weight_bytes": 21764320
+      },
+      "family": "tiny-random",
+      "quant": "Q8_0",
+      "ok": true,
+      "startup_s": 0.153,
+      "rss_after_load_bytes": 70778880,
+      "backend_version": "0.1.0-dev (build 1, commit 4df29be)",
+      "stub": false,
+      "command": "<llama.cpp>/bin/llama-server -m <models>/tiny-random-Q8_0.gguf --alias tiny-random-q8_0 --host 127.0.0.1 --port 56065 -c 4096 -t 2 -ngl 0 --offline --no-webui",
+      "log": "./runs/logs/llama-server-20260922-232927-tiny-random-q8_0.log",
+      "audit": {
+        "available": true,
+        "listening": [
+          "127.0.0.1:56065"
+        ],
+        "connections": [
+          "127.0.0.1:56065 -> 127.0.0.1:50138 (FIN_WAIT2)"
+        ],
+        "loopback_only": true,
+        "violations": []
+      },
+      "peak_rss_bytes": 86634496,
+      "peak_rss_source": "os_peak_counter",
+      "runs": {
+        "short": [
+          {
+            "run": 1,
+            "ttft_s": 0.012,
+            "total_s": 0.064,
+            "prompt_tokens": 46,
+            "completion_tokens": 64,
+            "prompt_n": 46,
+            "prompt_tps": 10981.14,
+            "gen_tps": 1140.07,
+            "fingerprint": "b1-4df29be",
+            "text_preview": " Tom consult Play consult Play consult Play consult Play Tom consult Play\u2500\u2500\u2500\u2500 consult Tom consult Tom consult Tom consult Tom consult Tom Tom Tom Tom Tom Tomsen"
+          },
+          {
+            "run": 2,
+            "ttft_s": 0.014,
+            "total_s": 0.06,
+            "prompt_tokens": 46,
+            "completion_tokens": 64,
+            "prompt_n": 46,
+            "prompt_tps": 11557.79,
+            "gen_tps": 1310.59,
+            "fingerprint": "b1-4df29be",
+            "text_preview": " Tom consult Play consult Play consult Play consult Play Tom consult Play\u2500\u2500\u2500\u2500 consult Tom consult Tom consult Tom consult Tom consult Tom Tom Tom Tom Tom Tomsen"
+          },
+          {
+            "run": 3,
+            "ttft_s": 0.031,
+            "total_s": 0.077,
+            "prompt_tokens": 46,
+            "completion_tokens": 64,
+            "prompt_n": 46,
+            "prompt_tps": 2239.1,
+            "gen_tps": 1278.98,
+            "fingerprint": "b1-4df29be",
+            "text_preview": " Tom consult Play consult Play consult Play consult Play Tom consult Play\u2500\u2500\u2500\u2500 consult Tom consult Tom consult Tom consult Tom consult Tom Tom Tom Tom Tom Tomsen"
+          }
+        ],
+        "rag": [
+          {
+            "run": 1,
+            "ttft_s": 0.072,
+            "total_s": 0.217,
+            "prompt_tokens": 1015,
+            "completion_tokens": 64,
+            "prompt_n": 1015,
+            "prompt_tps": 17401.89,
+            "gen_tps": 423.21,
+            "fingerprint": "b1-4df29be",
+            "text_preview": " describingzhuzione\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 p"
+          },
+          {
+            "run": 2,
+            "ttft_s": 0.071,
+            "total_s": 0.219,
+            "prompt_tokens": 1015,
+            "completion_tokens": 64,
+            "prompt_n": 1015,
+            "prompt_tps": 17269.83,
+            "gen_tps": 413.82,
+            "fingerprint": "b1-4df29be",
+            "text_preview": " describingzhuzione\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 p"
+          },
+          {
+            "run": 3,
+            "ttft_s": 0.07,
+            "total_s": 0.216,
+            "prompt_tokens": 1015,
+            "completion_tokens": 64,
+            "prompt_n": 1015,
+            "prompt_tps": 17208.35,
+            "gen_tps": 425.91,
+            "fingerprint": "b1-4df29be",
+            "text_preview": " describingzhuzione\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 pack\u7532 p"
+          }
+        ]
+      },
+      "summary": {
+        "short_gen_tps": 1278.98,
+        "short_total_s": 0.064,
+        "rag_prompt_tokens": 1015,
+        "rag_prompt_tps": 17269.83,
+        "rag_ttft_s": 0.071,
+        "rag_gen_tps": 423.21,
+        "rag_total_s": 0.217
+      }
+    }
+  ],
+  "analysis": {
+    "comparisons": [
+      {
+        "family": "tiny-random",
+        "quant": "F16",
+        "vs": "F32",
+        "peak_ram_pct": -23.8,
+        "gen_tps_pct": 33.7,
+        "rag_ttft_pct": -7.5,
+        "startup_pct": 1.9,
+        "file_size_pct": -49.5
+      },
+      {
+        "family": "tiny-random",
+        "quant": "Q4_K_M",
+        "vs": "F32",
+        "peak_ram_pct": -45.4,
+        "gen_tps_pct": 98.4,
+        "rag_ttft_pct": -29.0,
+        "startup_pct": -0.6,
+        "file_size_pct": -82.3
+      },
+      {
+        "family": "tiny-random",
+        "quant": "Q8_0",
+        "vs": "F32",
+        "peak_ram_pct": -37.9,
+        "gen_tps_pct": 109.0,
+        "rag_ttft_pct": -33.6,
+        "startup_pct": -0.6,
+        "file_size_pct": -72.8
+      }
+    ],
+    "recommended": {
+      "id": "tiny-random-q8_0",
+      "quant": "Q8_0",
+      "reason": "highest-precision option (bits per weight, capped at Q6_K; ties go to lower RAM) that fits the 6 GB budget (peak 83 MiB) and is usable (>= 8 tok/s generation, <= 15 s to first token on the RAG prompt)"
+    },
+    "failed": []
+  }
+}
