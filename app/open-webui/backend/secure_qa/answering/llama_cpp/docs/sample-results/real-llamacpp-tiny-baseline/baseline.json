@@ -1,0 +1,111 @@
+{
+  "kind": "baseline",
+  "runtime_version": "0.2.0",
+  "prompt_set": "2026-09-22.1",
+  "timestamp": "2026-09-22T23:35:31-0400",
+  "stub": false,
+  "system": {
+    "os": "Linux 6.18.44-fc-v37 (#1 SMP PREEMPT_DYNAMIC @0)",
+    "machine": "x86_64",
+    "cpu": "Intel(R) Xeon(R) Processor @ 2.10GHz",
+    "physical_cores": 2,
+    "logical_cores": 2,
+    "ram_total_bytes": 8422264832,
+    "ram_available_bytes": 7610736640,
+    "python": "3.11.15",
+    "hostname_hash": "0x25a848",
+    "timestamp": "2026-09-22T23:35:31-0400"
+  },
+  "network": {
+    "before": {
+      "outbound_reachable": true,
+      "attempts": [
+        {
+          "target": "1.1.1.1:443",
+          "result": "connected"
+        }
+      ]
+    },
+    "after": {
+      "outbound_reachable": true,
+      "attempts": [
+        {
+          "target": "1.1.1.1:443",
+          "result": "connected"
+        }
+      ]
+    },
+    "require_offline": false
+  },
+  "socket_audit": {
+    "available": true,
+    "listening": [
+      "127.0.0.1:56605"
+    ],
+    "connections": [],
+    "loopback_only": true,
+    "violations": []
+  },
+  "backend": {
+    "version": "0.1.0-dev (build 1, commit 4df29be)",
+    "command": "<llama.cpp>/bin/llama-server -m <models>/tiny-random-Q8_0.gguf --alias tiny-random-q8_0 --host 127.0.0.1 --port 56605 -c 4096 -t 2 -ngl 0 --offline --no-webui",
+    "log": "./runs/logs/llama-server-20260922-233531-tiny-random-q8_0.log"
+  },
+  "config": {
+    "host": "127.0.0.1",
+    "port": 8080,
+    "allow_remote": false,
+    "server_bin": "<llama.cpp>/bin/llama-server",
+    "backend_port": 0,
+    "models_dir": "<models>",
+    "model": "tiny-random-q8_0",
+    "ctx_size": 4096,
+    "threads": 0,
+    "n_gpu_layers": 0,
+    "mmap": true,
+    "mlock": false,
+    "extra_args": [],
+    "startup_timeout_s": 180.0,
+    "request_timeout_s": 600.0,
+    "offline": true,
+    "quant_preference": [
+      "Q4_K_M",
+      "Q5_K_M",
+      "Q4_K_S",
+      "Q6_K",
+      "Q8_0",
+      "IQ4_XS",
+      "Q4_0",
+      "Q3_K_M",
+      "F16",
+      "BF16"
+    ],
+    "runs_dir": "runs",
+    "source": "./runtime.toml"
+  },
+  "model": {
+    "id": "tiny-random-q8_0",
+    "path": "<models>/tiny-random-Q8_0.gguf",
+    "size_bytes": 21764320,
+    "display_size": "21 MiB",
+    "quant": "Q8_0",
+    "architecture": "llama",
+    "name": "tiny-random-llama (test only)",
+    "context_length": 2048,
+    "size_label": null,
+    "stub": false
+  },
+  "prompt": "In two sentences, explain what a private, offline document question-answering assistant does.",
+  "response": " Tom consult Play consult Play consult Play consult Play Tom consult Play\u2500\u2500\u2500\u2500 consult Tom consult Tom consult Tom consult Tom consult Tom Tom Tom Tom Tom TomsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendsendespVIS \u0424\u0435\u0434\u0435\u0440\u0430\u0446\u0438\u0438 div MC \u0449 ChiesarareKEYespVIS \u0424\u0435\u0434\u0435\u0440\u0430\u0446\u0438\u0438 \u0449 Chiesarare \u0449 Chiesarare \u0449",
+  "metrics": {
+    "startup_s": 0.153,
+    "rss_after_load_bytes": 70688768,
+    "peak_rss_bytes": 71925760,
+    "peak_rss_source": "os_peak_counter",
+    "ttft_s": 0.02,
+    "total_s": 0.183,
+    "prompt_tps": 2876.98,
+    "gen_tps": 974.61,
+    "completion_tokens": 160
+  }
+}

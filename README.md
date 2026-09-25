@@ -10,3 +10,4 @@ This repository is currently a **codebase scaffold**. It contains architecture a
 - [Desktop shell](app/desktop/README.md)
 - [Open WebUI frontend and backend](app/open-webui/README.md)
 - [Release area](app/release/README.md)
+- [E1 LLM runtime report](docs/reports/E1-runtime-report.md) (llama.cpp adapter in [`answering/llama_cpp/`](app/open-webui/backend/secure_qa/answering/llama_cpp/README.md))

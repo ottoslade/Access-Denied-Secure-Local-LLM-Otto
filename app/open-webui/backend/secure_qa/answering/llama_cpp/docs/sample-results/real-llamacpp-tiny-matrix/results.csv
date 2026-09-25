@@ -1,0 +1,5 @@
+model_id,family,quant,file_size_mib,startup_s,rss_after_load_mib,peak_rss_mib,short_gen_tps,short_total_s,rag_prompt_tokens,rag_prompt_tps,rag_ttft_s,rag_gen_tps,rag_total_s,stub,ok,error
+tiny-random-f16,tiny-random,F16,38.5,0.157,86.5,101.4,817.9,0.088,1015,11876.62,0.099,367.5,0.269,False,True,
+tiny-random-f32,tiny-random,F32,76.2,0.154,118.0,132.9,611.89,0.117,1015,10806.84,0.107,320.45,0.301,False,True,
+tiny-random-q4_k_m,tiny-random,Q4_K_M,13.5,0.153,57.4,72.5,1213.92,0.063,1015,14891.87,0.076,413.04,0.228,False,True,
+tiny-random-q8_0,tiny-random,Q8_0,20.8,0.153,67.5,82.6,1278.98,0.064,1015,17269.83,0.071,423.21,0.217,False,True,

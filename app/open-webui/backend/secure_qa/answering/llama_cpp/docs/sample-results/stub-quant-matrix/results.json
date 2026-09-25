@@ -1,0 +1,569 @@
+{
+  "kind": "quant_matrix",
+  "runtime_version": "0.2.0",
+  "prompt_set": "2026-09-22.1",
+  "timestamp": "2026-09-22T23:34:24-0400",
+  "system": {
+    "os": "Linux 6.18.44-fc-v37 (#1 SMP PREEMPT_DYNAMIC @0)",
+    "machine": "x86_64",
+    "cpu": "Intel(R) Xeon(R) Processor @ 2.10GHz",
+    "physical_cores": 2,
+    "logical_cores": 2,
+    "ram_total_bytes": 8422264832,
+    "ram_available_bytes": 7707799552,
+    "python": "3.11.15",
+    "hostname_hash": "0xd93da5",
+    "timestamp": "2026-09-22T23:34:24-0400"
+  },
+  "settings": {
+    "runs": 3,
+    "max_tokens": 96,
+    "ctx_size": 4096,
+    "threads": "auto",
+    "n_gpu_layers": 0,
+    "temperature": 0,
+    "ram_budget_gb": 6.0,
+    "min_gen_tps": 8.0,
+    "max_ttft_s": 15.0
+  },
+  "network": {
+    "outbound_reachable": true,
+    "attempts": [
+      {
+        "target": "1.1.1.1:443",
+        "result": "connected"
+      }
+    ]
+  },
+  "stub": true,
+  "results": [
+    {
+      "model": {
+        "id": "stub-1b-instruct-f16",
+        "path": "./models/stub-1b-instruct-F16.gguf",
+        "size_bytes": 327,
+        "quant": "F16",
+        "architecture": "llama",
+        "name": "stub-1b-instruct (stub)",
+        "context_length": 32768,
+        "size_label": "1B",
+        "stub": true,
+        "display_size": "1.86 GiB simulated",
+        "weight_bytes": 2000000000
+      },
+      "family": "stub-1b-instruct",
+      "quant": "F16",
+      "ok": true,
+      "startup_s": 2.18,
+      "rss_after_load_bytes": 2162814976,
+      "backend_version": "0 (docqa-stub)",
+      "stub": true,
+      "command": "python -m docqa_runtime.stub_server -m ./models/stub-1b-instruct-F16.gguf --alias stub-1b-instruct-f16 --host 127.0.0.1 --port 38087 -c 4096 -t 2 -ngl 0 --offline --no-webui",
+      "log": "./runs/logs/llama-server-20260922-232937-stub-1b-instruct-f16.log",
+      "audit": {
+        "available": true,
+        "listening": [
+          "127.0.0.1:38087"
+        ],
+        "connections": [],
+        "loopback_only": true,
+        "violations": []
+      },
+      "peak_rss_bytes": 2162851840,
+      "peak_rss_source": "sampled_rss",
+      "runs": {
+        "short": [
+          {
+            "run": 1,
+            "ttft_s": 0.583,
+            "total_s": 13.289,
+            "prompt_tokens": 31,
+            "completion_tokens": 96,
+            "prompt_n": 31,
+            "prompt_tps": 69.41,
+            "gen_tps": 7.48,
+            "fingerprint": "docqa-stub",
+            "text_preview": "This is a simulated answer from the DocQA stub runtime. No model weights were loaded, so the text carries no meaning, but its length, pacing and response format"
+          },
+          {
+            "run": 2,
+            "ttft_s": 0.584,
+            "total_s": 13.28,
+            "prompt_tokens": 31,
+            "completion_tokens": 96,
+            "prompt_n": 31,
+            "prompt_tps": 69.14,
+            "gen_tps": 7.48,
+            "fingerprint": "docqa-stub",
+            "text_preview": "This is a simulated answer from the DocQA stub runtime. No model weights were loaded, so the text carries no meaning, but its length, pacing and response format"
+          },
+          {
+            "run": 3,
+            "ttft_s": 0.588,
+            "total_s": 13.277,
+            "prompt_tokens": 31,
+            "completion_tokens": 96,
+            "prompt_n": 31,
+            "prompt_tps": 68.55,
+            "gen_tps": 7.49,
+            "fingerprint": "docqa-stub",
+            "text_preview": "This is a simulated answer from the DocQA stub runtime. No model weights were loaded, so the text carries no meaning, but its length, pacing and response format"
+          }
+        ],
+        "rag": [
+          {
+            "run": 1,
+            "ttft_s": 15.761,
+            "total_s": 28.404,
+            "prompt_tokens": 1086,
+            "completion_tokens": 96,
+            "prompt_n": 1086,
+            "prompt_tps": 69.52,
+            "gen_tps": 7.51,
+            "fingerprint": "docqa-stub",
+            "text_preview": "This is a simulated answer from the DocQA stub runtime. No model weights were loaded, so the text carries no meaning, but its length, pacing and response format"
+          },
+          {
+            "run": 2,
+            "ttft_s": 16.65,
+            "total_s": 29.296,
+            "prompt_tokens": 1086,
+            "completion_tokens": 96,
+            "prompt_n": 1086,
+            "prompt_tps": 65.76,
+            "gen_tps": 7.51,
+            "fingerprint": "docqa-stub",
+            "text_preview": "This is a simulated answer from the DocQA stub runtime. No model weights were loaded, so the text carries no meaning, but its length, pacing and response format"
+          },
+          {
+            "run": 3,
+            "ttft_s": 15.741,
+            "total_s": 28.397,
+            "prompt_tokens": 1086,
+            "completion_tokens": 96,
+            "prompt_n": 1086,
+            "prompt_tps": 69.6,
+            "gen_tps": 7.51,
+            "fingerprint": "docqa-stub",
+            "text_preview": "This is a simulated answer from the DocQA stub runtime. No model weights were loaded, so the text carries no meaning, but its length, pacing and response format"
+          }
+        ]
+      },
+      "summary": {
+        "short_gen_tps": 7.48,
+        "short_total_s": 13.28,
+        "rag_prompt_tokens": 1086,
+        "rag_prompt_tps": 69.52,
+        "rag_ttft_s": 15.761,
+        "rag_gen_tps": 7.51,
+        "rag_total_s": 28.404
+      }
+    },
+    {
+      "model": {
+        "id": "stub-1b-instruct-q4_k_m",
+        "path": "./models/stub-1b-instruct-Q4_K_M.gguf",
+        "size_bytes": 327,
+        "quant": "Q4_K_M",
+        "architecture": "llama",
+        "name": "stub-1b-instruct (stub)",
+        "context_length": 32768,
+        "size_label": "1B",
+        "stub": true,
+        "display_size": "583 MiB simulated",
+        "weight_bytes": 611250000
+      },
+      "family": "stub-1b-instruct",
+      "quant": "Q4_K_M",
+      "ok": true,
+      "startup_s": 0.794,
+      "rss_after_load_bytes": 773865472,
+      "backend_version": "0 (docqa-stub)",
+      "stub": true,
+      "command": "python -m docqa_runtime.stub_server -m ./models/stub-1b-instruct-Q4_K_M.gguf --alias stub-1b-instruct-q4_k_m --host 127.0.0.1 --port 34127 -c 4096 -t 2 -ngl 0 --offline --no-webui",
+      "log": "./runs/logs/llama-server-20260922-233147-stub-1b-instruct-q4_k_m.log",
+      "audit": {
+        "available": true,
+        "listening": [
+          "127.0.0.1:34127"
+        ],
+        "connections": [],
+        "loopback_only": true,
+        "violations": []
+      },
+      "peak_rss_bytes": 773902336,
+      "peak_rss_source": "sampled_rss",
+      "runs": {
+        "short": [
+          {
+            "run": 1,
+            "ttft_s": 0.181,
+            "total_s": 4.052,
+            "prompt_tokens": 31,
+            "completion_tokens": 96,
+            "prompt_n": 31,
+            "prompt_tps": 223.36,
+            "gen_tps": 24.55,
+            "fingerprint": "docqa-stub",
+            "text_preview": "This is a simulated answer from the DocQA stub runtime. No model weights were loaded, so the text carries no meaning, but its length, pacing and response format"
+          },
+          {
+            "run": 2,
+            "ttft_s": 0.185,
+            "total_s": 4.076,
+            "prompt_tokens": 31,
+            "completion_tokens": 96,
+            "prompt_n": 31,
+            "prompt_tps": 220.55,
+            "gen_tps": 24.41,
+            "fingerprint": "docqa-stub",
+            "text_preview": "This is a simulated answer from the DocQA stub runtime. No model weights were loaded, so the text carries no meaning, but its length, pacing and response format"
+          },
+          {
+            "run": 3,
+            "ttft_s": 0.182,
+            "total_s": 4.064,
+            "prompt_tokens": 31,
+            "completion_tokens": 96,
+            "prompt_n": 31,
+            "prompt_tps": 224.58,
+            "gen_tps": 24.47,
+            "fingerprint": "docqa-stub",
+            "text_preview": "This is a simulated answer from the DocQA stub runtime. No model weights were loaded, so the text carries no meaning, but its length, pacing and response format"
+          }
+        ],
+        "rag": [
+          {
+            "run": 1,
+            "ttft_s": 4.936,
+            "total_s": 8.817,
+            "prompt_tokens": 1086,
+            "completion_tokens": 96,
+            "prompt_n": 1086,
+            "prompt_tps": 221.9,
+            "gen_tps": 24.49,
+            "fingerprint": "docqa-stub",
+            "text_preview": "This is a simulated answer from the DocQA stub runtime. No model weights were loaded, so the text carries no meaning, but its length, pacing and response format"
+          },
+          {
+            "run": 2,
+            "ttft_s": 4.925,
+            "total_s": 8.808,
+            "prompt_tokens": 1086,
+            "completion_tokens": 96,
+            "prompt_n": 1086,
+            "prompt_tps": 222.45,
+            "gen_tps": 24.47,
+            "fingerprint": "docqa-stub",
+            "text_preview": "This is a simulated answer from the DocQA stub runtime. No model weights were loaded, so the text carries no meaning, but its length, pacing and response format"
+          },
+          {
+            "run": 3,
+            "ttft_s": 4.811,
+            "total_s": 8.697,
+            "prompt_tokens": 1086,
+            "completion_tokens": 96,
+            "prompt_n": 1086,
+            "prompt_tps": 227.84,
+            "gen_tps": 24.44,
+            "fingerprint": "docqa-stub",
+            "text_preview": "This is a simulated answer from the DocQA stub runtime. No model weights were loaded, so the text carries no meaning, but its length, pacing and response format"
+          }
+        ]
+      },
+      "summary": {
+        "short_gen_tps": 24.47,
+        "short_total_s": 4.064,
+        "rag_prompt_tokens": 1086,
+        "rag_prompt_tps": 222.45,
+        "rag_ttft_s": 4.925,
+        "rag_gen_tps": 24.47,
+        "rag_total_s": 8.808
+      }
+    },
+    {
+      "model": {
+        "id": "stub-1b-instruct-q5_k_m",
+        "path": "./models/stub-1b-instruct-Q5_K_M.gguf",
+        "size_bytes": 327,
+        "quant": "Q5_K_M",
+        "architecture": "llama",
+        "name": "stub-1b-instruct (stub)",
+        "context_length": 32768,
+        "size_label": "1B",
+        "stub": true,
+        "display_size": "678 MiB simulated",
+        "weight_bytes": 711250000
+      },
+      "family": "stub-1b-instruct",
+      "quant": "Q5_K_M",
+      "ok": true,
+      "startup_s": 0.92,
+      "rss_after_load_bytes": 873897984,
+      "backend_version": "0 (docqa-stub)",
+      "stub": true,
+      "command": "python -m docqa_runtime.stub_server -m ./models/stub-1b-instruct-Q5_K_M.gguf --alias stub-1b-instruct-q5_k_m --host 127.0.0.1 --port 37689 -c 4096 -t 2 -ngl 0 --offline --no-webui",
+      "log": "./runs/logs/llama-server-20260922-233227-stub-1b-instruct-q5_k_m.log",
+      "audit": {
+        "available": true,
+        "listening": [
+          "127.0.0.1:37689"
+        ],
+        "connections": [],
+        "loopback_only": true,
+        "violations": []
+      },
+      "peak_rss_bytes": 873938944,
+      "peak_rss_source": "sampled_rss",
+      "runs": {
+        "short": [
+          {
+            "run": 1,
+            "ttft_s": 0.212,
+            "total_s": 4.737,
+            "prompt_tokens": 31,
+            "completion_tokens": 96,
+            "prompt_n": 31,
+            "prompt_tps": 189.38,
+            "gen_tps": 21.0,
+            "fingerprint": "docqa-stub",
+            "text_preview": "This is a simulated answer from the DocQA stub runtime. No model weights were loaded, so the text carries no meaning, but its length, pacing and response format"
+          },
+          {
+            "run": 2,
+            "ttft_s": 0.215,
+            "total_s": 4.743,
+            "prompt_tokens": 31,
+            "completion_tokens": 96,
+            "prompt_n": 31,
+            "prompt_tps": 189.07,
+            "gen_tps": 20.98,
+            "fingerprint": "docqa-stub",
+            "text_preview": "This is a simulated answer from the DocQA stub runtime. No model weights were loaded, so the text carries no meaning, but its length, pacing and response format"
+          },
+          {
+            "run": 3,
+            "ttft_s": 0.214,
+            "total_s": 4.725,
+            "prompt_tokens": 31,
+            "completion_tokens": 96,
+            "prompt_n": 31,
+            "prompt_tps": 187.95,
+            "gen_tps": 21.06,
+            "fingerprint": "docqa-stub",
+            "text_preview": "This is a simulated answer from the DocQA stub runtime. No model weights were loaded, so the text carries no meaning, but its length, pacing and response format"
+          }
+        ],
+        "rag": [
+          {
+            "run": 1,
+            "ttft_s": 5.894,
+            "total_s": 10.417,
+            "prompt_tokens": 1086,
+            "completion_tokens": 96,
+            "prompt_n": 1086,
+            "prompt_tps": 185.84,
+            "gen_tps": 21.0,
+            "fingerprint": "docqa-stub",
+            "text_preview": "This is a simulated answer from the DocQA stub runtime. No model weights were loaded, so the text carries no meaning, but its length, pacing and response format"
+          },
+          {
+            "run": 2,
+            "ttft_s": 5.85,
+            "total_s": 10.384,
+            "prompt_tokens": 1086,
+            "completion_tokens": 96,
+            "prompt_n": 1086,
+            "prompt_tps": 187.21,
+            "gen_tps": 20.96,
+            "fingerprint": "docqa-stub",
+            "text_preview": "This is a simulated answer from the DocQA stub runtime. No model weights were loaded, so the text carries no meaning, but its length, pacing and response format"
+          },
+          {
+            "run": 3,
+            "ttft_s": 5.706,
+            "total_s": 10.219,
+            "prompt_tokens": 1086,
+            "completion_tokens": 96,
+            "prompt_n": 1086,
+            "prompt_tps": 191.99,
+            "gen_tps": 21.05,
+            "fingerprint": "docqa-stub",
+            "text_preview": "This is a simulated answer from the DocQA stub runtime. No model weights were loaded, so the text carries no meaning, but its length, pacing and response format"
+          }
+        ]
+      },
+      "summary": {
+        "short_gen_tps": 21.0,
+        "short_total_s": 4.737,
+        "rag_prompt_tokens": 1086,
+        "rag_prompt_tps": 187.21,
+        "rag_ttft_s": 5.85,
+        "rag_gen_tps": 21.0,
+        "rag_total_s": 10.384
+      }
+    },
+    {
+      "model": {
+        "id": "stub-1b-instruct-q8_0",
+        "path": "./models/stub-1b-instruct-Q8_0.gguf",
+        "size_bytes": 327,
+        "quant": "Q8_0",
+        "architecture": "llama",
+        "name": "stub-1b-instruct (stub)",
+        "context_length": 32768,
+        "size_label": "1B",
+        "stub": true,
+        "display_size": "1013 MiB simulated",
+        "weight_bytes": 1062500000
+      },
+      "family": "stub-1b-instruct",
+      "quant": "Q8_0",
+      "ok": true,
+      "startup_s": 1.18,
+      "rss_after_load_bytes": 1225170944,
+      "backend_version": "0 (docqa-stub)",
+      "stub": true,
+      "command": "python -m docqa_runtime.stub_server -m ./models/stub-1b-instruct-Q8_0.gguf --alias stub-1b-instruct-q8_0 --host 127.0.0.1 --port 49125 -c 4096 -t 2 -ngl 0 --offline --no-webui",
+      "log": "./runs/logs/llama-server-20260922-233314-stub-1b-instruct-q8_0.log",
+      "audit": {
+        "available": true,
+        "listening": [
+          "127.0.0.1:49125"
+        ],
+        "connections": [],
+        "loopback_only": true,
+        "violations": []
+      },
+      "peak_rss_bytes": 1225211904,
+      "peak_rss_source": "sampled_rss",
+      "runs": {
+        "short": [
+          {
+            "run": 1,
+            "ttft_s": 0.321,
+            "total_s": 7.05,
+            "prompt_tokens": 31,
+            "completion_tokens": 96,
+            "prompt_n": 31,
+            "prompt_tps": 126.28,
+            "gen_tps": 14.11,
+            "fingerprint": "docqa-stub",
+            "text_preview": "This is a simulated answer from the DocQA stub runtime. No model weights were loaded, so the text carries no meaning, but its length, pacing and response format"
+          },
+          {
+            "run": 2,
+            "ttft_s": 0.313,
+            "total_s": 7.09,
+            "prompt_tokens": 31,
+            "completion_tokens": 96,
+            "prompt_n": 31,
+            "prompt_tps": 128.35,
+            "gen_tps": 14.02,
+            "fingerprint": "docqa-stub",
+            "text_preview": "This is a simulated answer from the DocQA stub runtime. No model weights were loaded, so the text carries no meaning, but its length, pacing and response format"
+          },
+          {
+            "run": 3,
+            "ttft_s": 0.317,
+            "total_s": 7.051,
+            "prompt_tokens": 31,
+            "completion_tokens": 96,
+            "prompt_n": 31,
+            "prompt_tps": 127.41,
+            "gen_tps": 14.11,
+            "fingerprint": "docqa-stub",
+            "text_preview": "This is a simulated answer from the DocQA stub runtime. No model weights were loaded, so the text carries no meaning, but its length, pacing and response format"
+          }
+        ],
+        "rag": [
+          {
+            "run": 1,
+            "ttft_s": 8.828,
+            "total_s": 15.551,
+            "prompt_tokens": 1086,
+            "completion_tokens": 96,
+            "prompt_n": 1086,
+            "prompt_tps": 124.05,
+            "gen_tps": 14.13,
+            "fingerprint": "docqa-stub",
+            "text_preview": "This is a simulated answer from the DocQA stub runtime. No model weights were loaded, so the text carries no meaning, but its length, pacing and response format"
+          },
+          {
+            "run": 2,
+            "ttft_s": 8.824,
+            "total_s": 15.563,
+            "prompt_tokens": 1086,
+            "completion_tokens": 96,
+            "prompt_n": 1086,
+            "prompt_tps": 124.11,
+            "gen_tps": 14.1,
+            "fingerprint": "docqa-stub",
+            "text_preview": "This is a simulated answer from the DocQA stub runtime. No model weights were loaded, so the text carries no meaning, but its length, pacing and response format"
+          },
+          {
+            "run": 3,
+            "ttft_s": 8.6,
+            "total_s": 15.333,
+            "prompt_tokens": 1086,
+            "completion_tokens": 96,
+            "prompt_n": 1086,
+            "prompt_tps": 127.34,
+            "gen_tps": 14.11,
+            "fingerprint": "docqa-stub",
+            "text_preview": "This is a simulated answer from the DocQA stub runtime. No model weights were loaded, so the text carries no meaning, but its length, pacing and response format"
+          }
+        ]
+      },
+      "summary": {
+        "short_gen_tps": 14.11,
+        "short_total_s": 7.051,
+        "rag_prompt_tokens": 1086,
+        "rag_prompt_tps": 124.11,
+        "rag_ttft_s": 8.824,
+        "rag_gen_tps": 14.11,
+        "rag_total_s": 15.551
+      }
+    }
+  ],
+  "analysis": {
+    "comparisons": [
+      {
+        "family": "stub-1b-instruct",
+        "quant": "Q4_K_M",
+        "vs": "F16",
+        "peak_ram_pct": -64.2,
+        "gen_tps_pct": 227.1,
+        "rag_ttft_pct": -68.8,
+        "startup_pct": -63.6,
+        "file_size_pct": -69.4
+      },
+      {
+        "family": "stub-1b-instruct",
+        "quant": "Q5_K_M",
+        "vs": "F16",
+        "peak_ram_pct": -59.6,
+        "gen_tps_pct": 180.7,
+        "rag_ttft_pct": -62.9,
+        "startup_pct": -57.8,
+        "file_size_pct": -64.4
+      },
+      {
+        "family": "stub-1b-instruct",
+        "quant": "Q8_0",
+        "vs": "F16",
+        "peak_ram_pct": -43.4,
+        "gen_tps_pct": 88.6,
+        "rag_ttft_pct": -44.0,
+        "startup_pct": -45.9,
+        "file_size_pct": -46.9
+      }
+    ],
+    "recommended": {
+      "id": "stub-1b-instruct-q8_0",
+      "quant": "Q8_0",
+      "reason": "highest-precision option (bits per weight, capped at Q6_K; ties go to lower RAM) that fits the 6 GB budget (peak 1.14 GiB) and is usable (>= 8 tok/s generation, <= 15 s to first token on the RAG prompt)"
+    },
+    "failed": []
+  }
+}

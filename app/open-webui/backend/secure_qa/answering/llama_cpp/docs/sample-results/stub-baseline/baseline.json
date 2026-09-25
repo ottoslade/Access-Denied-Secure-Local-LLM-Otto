@@ -1,0 +1,111 @@
+{
+  "kind": "baseline",
+  "runtime_version": "0.2.0",
+  "prompt_set": "2026-09-22.1",
+  "timestamp": "2026-09-22T23:35:31-0400",
+  "stub": true,
+  "system": {
+    "os": "Linux 6.18.44-fc-v37 (#1 SMP PREEMPT_DYNAMIC @0)",
+    "machine": "x86_64",
+    "cpu": "Intel(R) Xeon(R) Processor @ 2.10GHz",
+    "physical_cores": 2,
+    "logical_cores": 2,
+    "ram_total_bytes": 8422264832,
+    "ram_available_bytes": 6933504000,
+    "python": "3.11.15",
+    "hostname_hash": "0x227909",
+    "timestamp": "2026-09-22T23:35:31-0400"
+  },
+  "network": {
+    "before": {
+      "outbound_reachable": true,
+      "attempts": [
+        {
+          "target": "1.1.1.1:443",
+          "result": "connected"
+        }
+      ]
+    },
+    "after": {
+      "outbound_reachable": true,
+      "attempts": [
+        {
+          "target": "1.1.1.1:443",
+          "result": "connected"
+        }
+      ]
+    },
+    "require_offline": false
+  },
+  "socket_audit": {
+    "available": true,
+    "listening": [
+      "127.0.0.1:42975"
+    ],
+    "connections": [],
+    "loopback_only": true,
+    "violations": []
+  },
+  "backend": {
+    "version": "0 (docqa-stub)",
+    "command": "python -m docqa_runtime.stub_server -m ./models/stub-1b-instruct-Q4_K_M.gguf --alias stub-1b-instruct-q4_k_m --host 127.0.0.1 --port 42975 -c 4096 -t 2 -ngl 0 --offline --no-webui",
+    "log": "./runs/logs/llama-server-20260922-233523-stub-1b-instruct-q4_k_m.log"
+  },
+  "config": {
+    "host": "127.0.0.1",
+    "port": 8080,
+    "allow_remote": false,
+    "server_bin": "stub",
+    "backend_port": 0,
+    "models_dir": "models",
+    "model": "",
+    "ctx_size": 4096,
+    "threads": 0,
+    "n_gpu_layers": 0,
+    "mmap": true,
+    "mlock": false,
+    "extra_args": [],
+    "startup_timeout_s": 180.0,
+    "request_timeout_s": 600.0,
+    "offline": true,
+    "quant_preference": [
+      "Q4_K_M",
+      "Q5_K_M",
+      "Q4_K_S",
+      "Q6_K",
+      "Q8_0",
+      "IQ4_XS",
+      "Q4_0",
+      "Q3_K_M",
+      "F16",
+      "BF16"
+    ],
+    "runs_dir": "runs",
+    "source": "./runtime.toml"
+  },
+  "model": {
+    "id": "stub-1b-instruct-q4_k_m",
+    "path": "./models/stub-1b-instruct-Q4_K_M.gguf",
+    "size_bytes": 327,
+    "display_size": "583 MiB simulated",
+    "quant": "Q4_K_M",
+    "architecture": "llama",
+    "name": "stub-1b-instruct (stub)",
+    "context_length": 32768,
+    "size_label": "1B",
+    "stub": true
+  },
+  "prompt": "In two sentences, explain what a private, offline document question-answering assistant does.",
+  "response": "This is a simulated answer from the DocQA stub runtime. No model weights were loaded, so the text carries no meaning, but its length, pacing and response format match what the real llama.cpp server would return for the same request. This is a simulated answer from the DocQA stub runtime. No model weights were loaded, so the text carries no meaning, but its length, pacing and response format match what the real llama.cpp server would return for the same request. This is a simulated answer from the DocQA stub runtime. No model weights were loaded, so the text carries no meaning, but its length, pacing and response format match what the real llama.cpp server would return for the same request. This is a simulated answer from the DocQA stub runtime. No model weights were loaded, so the text carries no meaning, but its length, pacing and response format match what the real llama.cpp server would return for the same request.",
+  "metrics": {
+    "startup_s": 0.841,
+    "rss_after_load_bytes": 773963776,
+    "peak_rss_bytes": 773976064,
+    "peak_rss_source": "os_peak_counter",
+    "ttft_s": 0.184,
+    "total_s": 6.703,
+    "prompt_tps": 217.67,
+    "gen_tps": 24.4,
+    "completion_tokens": 160
+  }
+}

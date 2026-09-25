@@ -1,0 +1,29 @@
+# Secure Local DocQA - runtime configuration.
+# Relative paths are resolved against the folder holding this file.
+# Every setting can also be overridden on the command line (see `docqa-runtime up --help`).
+
+[server]
+host = "127.0.0.1"        # the stable API; keep on loopback
+port = 8080
+allow_remote = false      # true exposes the model (and any document text) to the network
+
+[backend]
+server_bin = ""           # "" = auto: bin/llama-server.exe, then PATH. "stub" = simulated backend.
+backend_port = 0          # 0 = pick a free loopback port for llama-server
+models_dir = "models"
+model = ""                # "" = auto-pick by quant_preference; or a file name / id / path
+ctx_size = 4096
+threads = 0               # 0 = number of physical cores
+n_gpu_layers = 0          # reference laptop is CPU-only
+mmap = true
+mlock = false
+extra_args = []           # passed straight to llama-server, e.g. ["--flash-attn", "on"]
+startup_timeout_s = 180.0
+request_timeout_s = 600.0
+quant_preference = ["Q4_K_M", "Q5_K_M", "Q4_K_S", "Q6_K", "Q8_0", "IQ4_XS", "Q4_0", "Q3_K_M", "F16", "BF16"]
+
+[security]
+offline = true            # pass --offline to llama-server and strip download-related environment variables
+
+[output]
+runs_dir = "runs"         # logs, baseline records and benchmark reports

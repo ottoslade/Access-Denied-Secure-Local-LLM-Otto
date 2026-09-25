@@ -1,0 +1,74 @@
+{
+  "_note": "Week 1 candidate shortlist for the reference laptop (Windows, 8-16 GB RAM, CPU only). Repo/file names follow the usual Hugging Face GGUF naming; sizes are approximate. Verify each link and licence before first download - fetch_models.ps1 stops with a clear error if a file has moved.",
+  "candidates": [
+    {
+      "key": "qwen3-4b-2507",
+      "name": "Qwen3-4B-Instruct-2507",
+      "params_b": 4.0,
+      "license": "Apache-2.0",
+      "context": 262144,
+      "why": "Primary pick: strongest instruction following / grounding in the 4B class, permissive licence, long context, non-thinking variant (no <think> blocks to strip).",
+      "repo": "bartowski/Qwen_Qwen3-4B-Instruct-2507-GGUF",
+      "files": {
+        "Q4_K_M": {"file": "Qwen_Qwen3-4B-Instruct-2507-Q4_K_M.gguf", "approx_gb": 2.5},
+        "Q5_K_M": {"file": "Qwen_Qwen3-4B-Instruct-2507-Q5_K_M.gguf", "approx_gb": 2.9},
+        "Q8_0":   {"file": "Qwen_Qwen3-4B-Instruct-2507-Q8_0.gguf",   "approx_gb": 4.3}
+      }
+    },
+    {
+      "key": "llama-3.2-3b",
+      "name": "Llama-3.2-3B-Instruct",
+      "params_b": 3.2,
+      "license": "Llama 3.2 Community License (attribution + acceptable-use policy)",
+      "context": 131072,
+      "why": "Well-known baseline with broad tooling support; good fallback if Qwen licence or quality is a concern.",
+      "repo": "bartowski/Llama-3.2-3B-Instruct-GGUF",
+      "files": {
+        "Q4_K_M": {"file": "Llama-3.2-3B-Instruct-Q4_K_M.gguf", "approx_gb": 2.0},
+        "Q8_0":   {"file": "Llama-3.2-3B-Instruct-Q8_0.gguf",   "approx_gb": 3.4}
+      }
+    },
+    {
+      "key": "phi-3.5-mini",
+      "name": "Phi-3.5-mini-instruct",
+      "params_b": 3.8,
+      "license": "MIT",
+      "context": 131072,
+      "why": "MIT licence, long context, strong on reading-comprehension style tasks.",
+      "repo": "bartowski/Phi-3.5-mini-instruct-GGUF",
+      "files": {
+        "Q4_K_M": {"file": "Phi-3.5-mini-instruct-Q4_K_M.gguf", "approx_gb": 2.4}
+      }
+    },
+    {
+      "key": "qwen2.5-1.5b",
+      "name": "Qwen2.5-1.5B-Instruct",
+      "params_b": 1.5,
+      "license": "Apache-2.0",
+      "context": 32768,
+      "why": "Low-spec fallback for 8 GB machines under memory pressure; fast download for smoke tests.",
+      "repo": "bartowski/Qwen2.5-1.5B-Instruct-GGUF",
+      "files": {
+        "Q4_K_M": {"file": "Qwen2.5-1.5B-Instruct-Q4_K_M.gguf", "approx_gb": 1.0},
+        "Q8_0":   {"file": "Qwen2.5-1.5B-Instruct-Q8_0.gguf",   "approx_gb": 1.6}
+      }
+    },
+    {
+      "key": "smollm2-1.7b",
+      "name": "SmolLM2-1.7B-Instruct",
+      "params_b": 1.7,
+      "license": "Apache-2.0",
+      "context": 8192,
+      "why": "Very fast, permissive; context is short (8k) so only for small documents.",
+      "repo": "bartowski/SmolLM2-1.7B-Instruct-GGUF",
+      "files": {
+        "Q4_K_M": {"file": "SmolLM2-1.7B-Instruct-Q4_K_M.gguf", "approx_gb": 1.1}
+      }
+    }
+  ],
+  "sets": {
+    "week2": [["qwen3-4b-2507", "Q4_K_M"], ["qwen3-4b-2507", "Q8_0"]],
+    "week2-small": [["qwen2.5-1.5b", "Q4_K_M"], ["qwen2.5-1.5b", "Q8_0"]],
+    "shortlist": [["qwen3-4b-2507", "Q4_K_M"], ["llama-3.2-3b", "Q4_K_M"], ["phi-3.5-mini", "Q4_K_M"], ["qwen2.5-1.5b", "Q4_K_M"]]
+  }
+}
